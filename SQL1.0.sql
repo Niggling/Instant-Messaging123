@@ -1,0 +1,1 @@
+SELECT * FROM internet_lessons.message;

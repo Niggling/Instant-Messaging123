@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace = "com.example.demo.mapper.seven.ProjectDetailsMapper">
+    <!--    <insert id = 'insertProject'>-->
+    <!--        insert into user values ('001001006','这是第六个项目示例')-->
+    <!--    </insert>-->
+
+    <insert id = 'insertProjectDetails'>
+        insert into project_details values (#{projectID},#{name},#{bigclass},#{smallclass},#{progress},#{money},#{importance},#{stage},#{finish},#{leader},#{teamname});
+    </insert>
+
+    <insert id = 'insertProjectTime'>
+        insert into time values (#{projectID},#{start_time},#{expect_end_time},#{fact_end_time});
+    </insert>
+
+    <insert id = 'insertProjectOutline'>
+        insert into outline values (#{projectID},#{project_outline},#{del},#{name});
+    </insert>
+
+    <insert id = 'insertProjectE_P'>
+        insert into employee_project values (#{employeeID},#{projectID},#{job},#{jobstage});
+    </insert>
+
+
+    <!--    &lt;!&ndash;void updateProject();&ndash;&gt;-->
+    <!--    <update id="updateProject">-->
+    <!--        update user set user='这是被修改过的第二个示例'where projectID = 001001002-->
+    <!--    </update>-->
+
+    <update id="updateProject" >
+        update project_details set progress=#{progress},money=#{money},importance=#{importance},stage=#{stage} where (projectID=#{projectID});
+     <!--update time set fact_end_time=#{fact_end_time} where (projectID=#{projectID});-->
+    </update>
+
+    <update id="updateProjectTime" >
+        update time set fact_end_time=#{fact_end_time} where (projectID=#{projectID});
+    </update>
+    <!--    可编辑项目进度，合同额，重要程度，项目阶段，项目实际结束时间-->
+    <update id="updateFinish" >
+        update project_details set finish=#{finish} where (projectID=#{projectID});
+    </update>
+
+    <update id="updateFinish2" >
+        update project_details set finish=#{finish},stage='结束阶段',progress='100%' where (projectID=#{projectID});
+    </update>
+
+    <update id="updateFinish3" >
+        update time set project_management.time.fact_end_time=#{fact_end_time} where (projectID=#{projectID});
+    </update>
+
+
+    <!--    把小明和password变成动态的什么东西-->
+    <!--    <select id="selectProjectById" resultType="com.example.demo.pojo.seven.userservice">-->
+    <!--        select * from user where username = "小明" and password = 123-->
+    <!--    </select>-->
+    <select id="selectProjectById" resultType="com.example.demo.pojo.seven.Project_details">
+        select * from project_details where projectID=#{projectID}
+    </select>
+
+    <select id="selectProjectByName" resultType="com.example.demo.pojo.seven.Project_details">
+        select * from project_details where name =#{name}
+    </select>
+
+
+    <select id="selectProjectName" resultType="com.example.demo.pojo.seven.Project_details">
+        select * from project_management.project_details where name=#{name};
+    </select>
+
+    <!--resultType:设置默认的映射关系，resultMap:设置自定义的映射-->
+    <!--    <delete id="deleteProject">-->
+    <!--        delete from user where projectID = 001001004-->
+    <!--    </delete>-->
+
+        <delete id="deleteProjectdetails">
+            delete from project_details where projectID = #{projectID}
+        </delete>
+    <delete id="deleteProjectoutline">
+        delete from outline where projectID = #{projectID}
+    </delete>
+    <delete id="deleteProjecttime">
+        delete from time where projectID = #{projectID}
+    </delete>
+    <delete id="deleteProjectemployee_project">
+        delete from employee_project where projectID = #{projectID}
+    </delete>
+
+</mapper>

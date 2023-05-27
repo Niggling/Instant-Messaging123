@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace = "com.example.demo.mapper.seven.EmployeeProjectMapper">
+
+    <select id="selectEmployeeByProjectId" resultType="com.example.demo.pojo.seven.Employee_project">
+        select * from employee_project where projectId = #{projectID}
+    </select>
+
+    <select id="selectProjectIDByEmployeeId" resultType="com.example.demo.pojo.seven.Employee_project">
+        select projectID from employee_project where employeeId = #{employeeId}
+    </select>
+
+
+
+
+    <select id="selectJobStage" resultType="com.example.demo.pojo.seven.Employee_project">
+        select jobstage from employee_project where employeeId = #{employeeID} and projectId = #{projectId}
+    </select>
+
+
+    <select id="countJobStage" resultType = "com.example.demo.pojo.seven.Employee_project">
+        select * from employee_project where projectID=#{projectID}
+    </select>
+    <select id="countJob" resultType = "com.example.demo.pojo.seven.Employee_project">
+        select * from employee_project where projectID=#{projectID}
+    </select>
+
+    <select id="String" resultType = "com.example.demo.pojo.seven.Employee_project">
+        select * from employee_project
+    </select>
+
+    <select id="countJob2" resultType = "com.example.demo.pojo.seven.Employee_project">
+        select * from employee_project where projectID=#{projectID}
+    </select>
+
+    <insert id="addTeamMember">
+         insert into employee_project  values (#{employeeID},#{projectID},#{job},#{jobstage})
+    </insert>
+
+    <delete id="deleteMe">
+        delete from employee_project where employeeID = #{employeeID} and projectID = #{projectID}
+    </delete>
+
+    <delete id="deleteOther">
+        delete from employee_project where employeeID = #{employeeID} and projectID = #{projectID}
+    </delete>
+</mapper>

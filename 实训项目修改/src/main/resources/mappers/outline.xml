@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.example.demo.mapper.seven.OutlineMapper">
+
+    <insert id = 'insertOutline'>
+        insert into outline values (#{projectID},#{project_outline},#{del},#{name})
+    </insert>
+    <!--void updateProject();-->
+    <!--<update id="updateProject">
+        update outline set project_outline='这是被修改过的第二个示例'where projectID = 001001002
+    </update>-->
+
+    <!--    void updeteDel(int employeeID);-->
+    <update id="updateDel" >
+        update outline set del=#{del} where (projectID=#{projectID});
+    </update>
+
+    <select id="selectProjectById" resultType="com.example.demo.pojo.seven.Outline">
+        select * from outline where projectID = #{projectID}
+    </select>
+
+    <select id="selectAllOutline" resultType="com.example.demo.pojo.seven.Outline">
+        select * from outline
+    </select>
+    <!--resultType:设置默认的映射关系，resultMap:设置自定义的映射-->
+   <!-- <delete id="deleteProject">
+        delete from outline where projectID = 001001004
+    </delete>-->
+</mapper>

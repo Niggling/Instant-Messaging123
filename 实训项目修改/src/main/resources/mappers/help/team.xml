@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace = "com.example.demo.mapper.help.TeamMapper">
+
+
+    <select id="selectAllMember" resultType="com.example.demo.pojo.help.TeamService">
+        select employee_project.employeeID,projectID,employee.name,employee_project.jobstage,employee_project.job from employee_project,user,employee where projectId = #{projectId} and employee_project.employeeID=user.employeeID and user.employeeID=employee.employeeID
+    </select>
+
+</mapper>

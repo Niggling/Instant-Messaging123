@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace = "com.example.demo.mapper.seven.TimeMapper">
+    <!--    <insert id = 'insertProject'>-->
+    <!--        insert into user values ('001001006','这是第六个项目示例')-->
+    <!--    </insert>-->
+
+    <!--    &lt;!&ndash;void updateProject();&ndash;&gt;-->
+    <!--    <update id="updateProject">-->
+    <!--        update user set user='这是被修改过的第二个示例'where projectID = 001001002-->
+    <!--    </update>-->
+
+    <!--    把小明和password变成动态的什么东西-->
+    <!--    <select id="selectProjectById" resultType="com.example.demo.pojo.seven.userservice">-->
+    <!--        select * from user where username = "小明" and password = 123-->
+    <!--    </select>-->
+    <select id="selectTimeById" resultType="com.example.demo.pojo.seven.Time">
+        select * from time where projectID=#{projectID}
+    </select>
+
+    <!--resultType:设置默认的映射关系，resultMap:设置自定义的映射-->
+    <!--    <delete id="deleteProject">-->
+    <!--        delete from user where projectID = 001001004-->
+    <!--    </delete>-->
+</mapper>
